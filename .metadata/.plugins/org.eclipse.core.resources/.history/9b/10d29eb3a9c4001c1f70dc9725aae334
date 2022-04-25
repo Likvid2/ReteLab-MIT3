@@ -32,17 +32,32 @@ public class RunStatechart {
 		ExampleStatemachine esm = new ExampleStatemachine();
 		esm.setTimer(new TimerService());
 		RuntimeService.getInstance().registerStatemachine(esm, 200);
-		esm.init();esm.enter();esm.runCycle();
+		esm.init();
+		esm.enter();
+		esm.runCycle();
 		while(true) {
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			try {String input = br.readLine();
-				if (input.equals("exit")) {System.exit(0);}
-				else {switch (input) {
+			BufferedReader br = new BufferedReader(
+					new InputStreamReader(System.in)
+					);
+			
+			try {
+				String input = br.readLine();
+				
+				if (input.equals("exit")) {
+					System.exit(0);
+				}
+				else {
+					switch (input) {
 						case "start": { esm.raiseStart(); esm.runCycle(); break; } 
 						case "white": { esm.raiseWhite(); esm.runCycle(); break; }
 						case "black": { esm.raiseBlack(); esm.runCycle(); break; }
-						default: break;}}
-				print(esm); } catch (IOException e) {e.printStackTrace();}
+						default: break;
+					}
+				}
+				print(esm); 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

@@ -72,13 +72,13 @@ public class Main {
 
 		}
 		runnableCodePrinter(eventNames);
-		codePrinter(varNames);
+		codePrinter(varNames, eventNames);
 		// Transforming the model into a graph representation
 		String content = model2gml.transform(root);
 		// and saving it
 		manager.saveFile("model_output/graph.gml", content);
 	}
-	static public void codePrinter(ArrayList<String> varNames) {
+	static public void codePrinter(ArrayList<String> varNames, ArrayList<String> eventNames) {
 		System.out.println("public static void print(IExampleStatemachine s) {");
 		for (String name : varNames)
 			System.out.println("\tSystem.out.println(\"" 
@@ -86,6 +86,11 @@ public class Main {
 		+ " = \" + s.getSCInterface().get" 
 		+ name.toUpperCase().charAt(0) + name.substring(1) 
 		+ "());");
+		//for (String name : eventNames)
+		//	System.out.println("\tSystem.out.println(" 
+		//+ "s.getSCInterface().get" 
+		//+ name.toUpperCase().charAt(0) + name.substring(1) 
+		//+ "());");
 		System.out.println("}");
 	}
 	
