@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 
 import hu.bme.mit.yakindu.analysis.RuntimeService;
 import hu.bme.mit.yakindu.analysis.TimerService;
+// import hu.bme.mit.yakindu.analysis.RuntimeService;
+// import hu.bme.mit.yakindu.analysis.TimerService;
 import hu.bme.mit.yakindu.analysis.example.ExampleStatemachine;
 import hu.bme.mit.yakindu.analysis.example.IExampleStatemachine;
 

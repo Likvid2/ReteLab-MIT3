@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 
 import hu.bme.mit.yakindu.analysis.RuntimeService;
 import hu.bme.mit.yakindu.analysis.TimerService;
+// import hu.bme.mit.yakindu.analysis.RuntimeService;
+// import hu.bme.mit.yakindu.analysis.TimerService;
 import hu.bme.mit.yakindu.analysis.example.ExampleStatemachine;
 import hu.bme.mit.yakindu.analysis.example.IExampleStatemachine;
 
@@ -28,14 +30,15 @@ public class RunStatechart {
 //		s.runCycle();
 //		print(s);
 //		System.exit(0);
-		
+
+		boolean running = true;
 		ExampleStatemachine esm = new ExampleStatemachine();
 		esm.setTimer(new TimerService());
 		RuntimeService.getInstance().registerStatemachine(esm, 200);
 		esm.init();
 		esm.enter();
 		esm.runCycle();
-		while(true) {
+		while(running) {
 			BufferedReader br = new BufferedReader(
 					new InputStreamReader(System.in)
 					);
@@ -43,18 +46,17 @@ public class RunStatechart {
 			try {
 				String input = br.readLine();
 				
-				if (input.equals("exit")) {
-					System.exit(0);
-				}
+				if (input.equals("exit"))
+					running = false;
+				
 				else {
 					switch (input) {
-						case "start": { esm.raiseStart(); esm.runCycle(); break; } 
-						case "white": { esm.raiseWhite(); esm.runCycle(); break; }
-						case "black": { esm.raiseBlack(); esm.runCycle(); break; }
+						case "start": { esm.raiseStart(); esm.runCycle(); print(esm); break; } 
+						case "white": { esm.raiseWhite(); esm.runCycle(); print(esm); break; }
+						case "black": { esm.raiseBlack(); esm.runCycle(); print(esm); break; }
 						default: break;
 					}
 				}
-				print(esm); 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

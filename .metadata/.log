@@ -48,3 +48,9 @@ Binding(CTRL+D,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.xtext.ui.embeddedTextEditorScope,,,system)
+
+!ENTRY org.eclipse.help 4 0 2022-04-25 15:22:38.282
+!MESSAGE Required attribute "label" missing from "topic" element in "/org.yakindu.sct.doc.user/help/user-guide/c-domain-toc.xml" (skipping element)
+
+!ENTRY org.eclipse.help 4 0 2022-04-25 15:22:38.335
+!MESSAGE Required attribute "label" missing from "topic" element in "/org.yakindu.sct.doc.user/help/user-guide/scxml_domain-toc.xml" (skipping element)
