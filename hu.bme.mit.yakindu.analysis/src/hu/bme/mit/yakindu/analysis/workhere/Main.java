@@ -4,6 +4,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.junit.Test;
 import org.yakindu.sct.model.sgraph.State;
+import org.yakindu.sct.model.sgraph.Transition;
 import org.yakindu.sct.model.sgraph.Statechart;
 
 import hu.bme.mit.model2gml.Model2GML;
@@ -30,7 +31,21 @@ public class Main {
 			if(content instanceof State) {
 				State state = (State) content;
 				System.out.println(state.getName());
+				boolean hasOutGoing = false;
+				for (Transition t : state.getOutgoingTransitions())
+					if ( ! t.getTarget().equals(state))
+						hasOutGoing = true;
+				if ( ! hasOutGoing)
+					System.out.println("trap: " + state.getName());
+				if (state.getName() == null || state.getName() == "")
+					System.out.println("Should you name this state \"Bubblegum\"?");
 			}
+			else if (content instanceof Transition) {
+                Transition tr = (Transition) content;
+                System.out.println(tr.getSource().getName() + " -> "
+                + tr.getTarget().getName());
+            }
+
 		}
 		
 		// Transforming the model into a graph representation
