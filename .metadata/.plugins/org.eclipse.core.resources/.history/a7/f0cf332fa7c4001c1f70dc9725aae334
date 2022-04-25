@@ -80,16 +80,17 @@ public class Main {
 	static public void codePrinter(ArrayList<String> varNames, ArrayList<String> eventNames) {
 		System.out.println("public static void print(IExampleStatemachine s) {");
 		for (String name : varNames)
-			System.out.println("\tSystem.out.println(\"" 
+			System.out.println("System.out.println(\"" 
 		+ name.toUpperCase().charAt(0) 
 		+ " = \" + s.getSCInterface().get" 
 		+ name.toUpperCase().charAt(0) + name.substring(1) 
 		+ "());");
-		//for (String name : eventNames)
-		//	System.out.println("\tSystem.out.println(" 
-		//+ "s.getSCInterface().get" 
-		//+ name.toUpperCase().charAt(0) + name.substring(1) 
-		//+ "());");
+		for (String name : eventNames)
+			System.out.println("System.out.println(\"" 
+		+ name.toUpperCase().charAt(0) 
+		+ " = \" + s.getSCInterface().get" 
+		+ name.toUpperCase().charAt(0) + name.substring(1) 
+		+ "());");
 		System.out.println("}");
 	}
 }

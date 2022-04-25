@@ -85,11 +85,12 @@ public class Main {
 		+ " = \" + s.getSCInterface().get" 
 		+ name.toUpperCase().charAt(0) + name.substring(1) 
 		+ "());");
-		//for (String name : eventNames)
-		//	System.out.println("\tSystem.out.println(" 
-		//+ "s.getSCInterface().get" 
-		//+ name.toUpperCase().charAt(0) + name.substring(1) 
-		//+ "());");
+		for (String name : eventNames)
+			System.out.println("\tSystem.out.println(\"" 
+		+ name.toUpperCase().charAt(0) 
+		+ " = \" + s.getSCInterface().get" 
+		+ name.toUpperCase().charAt(0) + name.substring(1) 
+		+ "());");
 		System.out.println("}");
 	}
 }
