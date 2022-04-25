@@ -24,6 +24,12 @@ public class ExampleStatemachine implements IExampleStatemachine {
 			black = true;
 		}
 		
+		private boolean sajt;
+		
+		public void raiseSajt() {
+			sajt = true;
+		}
+		
 		private long whiteTime;
 		
 		public long getWhiteTime() {
@@ -48,6 +54,7 @@ public class ExampleStatemachine implements IExampleStatemachine {
 			start = false;
 			white = false;
 			black = false;
+			sajt = false;
 		}
 	}
 	
@@ -215,6 +222,10 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		sCInterface.raiseBlack();
 	}
 	
+	public void raiseSajt() {
+		sCInterface.raiseSajt();
+	}
+	
 	public long getWhiteTime() {
 		return sCInterface.getWhiteTime();
 	}
@@ -378,7 +389,12 @@ public class ExampleStatemachine implements IExampleStatemachine {
 						
 						enterSequence_main_region_White_default();
 					} else {
-						did_transition = false;
+						if (sCInterface.sajt) {
+							exitSequence_main_region_White();
+							enterSequence_main_region_Init_default();
+						} else {
+							did_transition = false;
+						}
 					}
 				}
 			}

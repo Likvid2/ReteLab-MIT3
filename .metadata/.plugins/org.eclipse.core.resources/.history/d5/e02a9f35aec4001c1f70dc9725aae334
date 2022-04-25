@@ -3,7 +3,6 @@ package hu.bme.mit.yakindu.analysis.workhere;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.junit.Test;
-import org.yakindu.base.types.Direction;
 import org.yakindu.sct.model.sgraph.State;
 import org.yakindu.sct.model.sgraph.Transition;
 import org.yakindu.sct.model.stext.stext.EventDefinition;
@@ -59,7 +58,6 @@ public class Main {
                 Transition tr = (Transition) content;
                 System.out.println(tr.getSource().getName() + " -> "
                 + tr.getTarget().getName());
-                
             }
 			else if (content instanceof VariableDefinition) {
 				VariableDefinition vd = (VariableDefinition) content;
@@ -68,11 +66,8 @@ public class Main {
 			}
 			else if (content instanceof EventDefinition) {
 				EventDefinition ed = (EventDefinition) content;
-
-				if(ed.getDirection() == Direction.IN) {
-					System.out.println(ed.getName());
-					eventNames.add(ed.getName());
-				}
+				System.out.println(ed.getName());
+				eventNames.add(ed.getName());
 			}
 
 		}

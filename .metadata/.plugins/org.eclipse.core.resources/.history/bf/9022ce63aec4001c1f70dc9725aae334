@@ -63,6 +63,8 @@ public class Main {
             }
 			else if (content instanceof VariableDefinition) {
 				VariableDefinition vd = (VariableDefinition) content;
+
+				if(vd. == Direction.IN) {
 				System.out.println(vd.getName());
 				varNames.add(vd.getName());
 			}
